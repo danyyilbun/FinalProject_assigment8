@@ -10,13 +10,10 @@ public class DBHandler {
     public List<Trucker> getTruckers() throws ClassNotFoundException, SQLException {
         List<Trucker> tc = new ArrayList<Trucker>();
         try{
-            MysqlDataSource dataSource = new MysqlDataSource();
-            dataSource.setUser("root");
-            dataSource.setPassword(" ");
-            dataSource.setServerName("jdbc:mysql://localhost:3306/db_trip");
-          //  Class.forName("com.mysql.jdbc.Driver");
-     //   Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_trip","root","");
-            Connection con = dataSource.getConnection();
+
+            Class.forName("com.mysql.jdbc.Driver");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/db_trip","root","");
+
             //here sonoo is database name, root is username and password
         Statement stmt=con.createStatement();
         ResultSet rs=stmt.executeQuery("select * from trip_journals");
